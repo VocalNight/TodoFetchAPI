@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using TodoFetchAPI.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("BreweryDatabase")));
 
 var app = builder.Build();
 
